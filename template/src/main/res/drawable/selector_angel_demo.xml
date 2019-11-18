@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><!--selector demo展示-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shape_angel_demo" />
+    <item android:drawable="@drawable/shape_angel_demo" android:state_focused="true" />
+    <item android:drawable="@drawable/shape_angel_demo" android:state_enabled="true" />
+    <item android:drawable="@drawable/shape_angel_demo" android:state_pressed="true" />
+</selector>

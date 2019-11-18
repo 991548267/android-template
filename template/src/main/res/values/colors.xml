@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/bg_view_white</color>
+    <color name="colorPrimaryDark">@color/LightGray</color>
+    <color name="colorAccent">@color/text_color_blue</color>
+
+    <color name="bg_all_background">@color/bg_view_ghost_white</color>
+    <color name="bg_all_foreground">@color/bg_view_white</color>
+
+    <color name="bg_transparent_gray">#80808080</color>
+
+    <color name="bg_view_white">@color/White</color>
+    <color name="bg_view_black">@color/Black</color>
+    <color name="bg_view_ghost_white">@color/GhostWhite</color>
+    <color name="bg_view_gray">@color/Gray</color>
+    <color name="bg_view_gray_one">@color/LightGray</color>
+    <color name="bg_view_gray_two">@color/DarkGray</color>
+    <color name="bg_view_red">@color/Red</color>
+    <color name="bg_view_blue">@color/DeepSkyBlue</color>
+    <color name="bg_view_green">@color/Green</color>
+
+    <color name="text_color_red">@color/bg_view_red</color>
+    <color name="text_color_green">@color/bg_view_green</color>
+    <color name="text_color_blue">@color/DeepSkyBlue</color>
+    <color name="text_color_orange">@color/Orange</color>
+    <color name="text_color_black">@color/bg_view_black</color>
+    <color name="text_color_white">@color/bg_view_white</color>
+    <color name="text_color_gray">@color/bg_view_gray</color>
+    <color name="text_color_gray_more">@color/bg_view_gray_one</color>
+
+</resources>

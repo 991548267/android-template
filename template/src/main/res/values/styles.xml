@@ -1,0 +1,285 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="TemplateTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--标题栏颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--控件选中颜色-->
+        <item name="colorAccent">@color/text_color_blue</item>
+    </style>
+
+    <style name="TemplateTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TemplateTheme.NoActionBar.Translucent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--AppCompatActivity设置透明背景 - xy18990的博客 - CSDN博客 -->
+    <!--http://blog.csdn.net/xy18990/article/details/69569438-->
+    <style name="TemplateTheme.Fullscreen" parent="TemplateTheme.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="TemplateTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="TemplateTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ActivityTranslucent">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <!--toolbar back key color -->
+    <style name="toolbar_theme" parent="TemplateTheme.AppBarOverlay">
+        <!--默认返回键颜色-->
+        <item name="colorControlNormal">@color/bg_view_white</item>
+        <!--字体颜色-->
+        <item name="android:textColorPrimary">@color/bg_view_white</item>
+    </style>
+
+    <!--toolbar back key color -->
+    <style name="search_toolbar_theme" parent="TemplateTheme.AppBarOverlay">
+        <!--默认返回键颜色-->
+        <item name="colorControlNormal">@color/bg_view_blue</item>
+        <!--字体颜色-->
+        <item name="android:textColorPrimary">@color/text_color_black</item>
+    </style>
+
+    <!--Text-->
+    <style name="text">
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="text.sp10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="text.sp10.gray">
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="text.sp10.blue">
+        <item name="android:textColor">@color/text_color_blue</item>
+    </style>
+
+    <style name="text.sp12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="text.sp12.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.sp12.white">
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="text.sp12.black">
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="text.sp12.gray">
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="text.sp12.gray_more">
+        <item name="android:textColor">@color/text_color_gray_more</item>
+    </style>
+
+    <style name="text.sp12.red">
+        <item name="android:textColor">@color/text_color_red</item>
+    </style>
+
+    <style name="text.sp12.blue">
+        <item name="android:textColor">@color/text_color_blue</item>
+    </style>
+
+    <style name="text.sp13">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="text.sp13.black">
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="text.sp14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="text.sp14.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.sp14.white">
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="text.sp14.black">
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="text.sp14.red">
+        <item name="android:textColor">@color/text_color_red</item>
+    </style>
+
+    <style name="text.sp14.blue">
+        <item name="android:textColor">@color/text_color_blue</item>
+    </style>
+
+    <style name="text.sp14.gray">
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="text.sp14.gray_more">
+        <item name="android:textColor">@color/text_color_gray_more</item>
+    </style>
+
+    <style name="text.sp16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text.sp16.black">
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="text.sp16.white">
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="text.sp16.gray">
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="text.sp16.red">
+        <item name="android:textColor">@color/text_color_red</item>
+    </style>
+
+    <style name="text.sp16.blue">
+        <item name="android:textColor">@color/text_color_blue</item>
+    </style>
+
+    <style name="text.sp16.black.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.sp18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text.sp18.white">
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="text.sp18.black">
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="text.sp18.black.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.sp18.red">
+        <item name="android:textColor">@color/text_color_red</item>
+    </style>
+
+    <style name="text.sp18.blue">
+        <item name="android:textColor">@color/text_color_blue</item>
+    </style>
+
+    <style name="text.sp18.orange">
+        <item name="android:textColor">@color/text_color_orange</item>
+    </style>
+
+    <style name="text.sp18.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.sp20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text.sp20.red">
+        <item name="android:textColor">@color/text_color_red</item>
+    </style>
+
+    <style name="text.sp20.blue">
+        <item name="android:textColor">@color/text_color_blue</item>
+    </style>
+
+    <style name="text.sp20.blue.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.sp22">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="text.sp22.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Button-->
+    <style name="button" parent="@style/Widget.AppCompat.Button" />
+
+    <style name="button.white">
+        <item name="android:background">@drawable/inset_shape_corners_solid_white</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="button.gray">
+        <item name="android:background">@drawable/inset_shape_corners_solid_gray</item>
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="button.blue">
+        <item name="android:background">@drawable/inset_shape_corners_solid_blue</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <!--Deprecated-->
+    <style name="button.sp16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="button.sp16.white">
+        <item name="android:background">@drawable/inset_shape_corners_solid_white</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="button.sp16.gray">
+        <item name="android:background">@drawable/inset_shape_corners_solid_gray</item>
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="button.sp16.blue">
+        <item name="android:background">@drawable/inset_shape_corners_solid_blue</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="take_photo_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/set_translate_alpha_bottom_in_slow</item>
+        <item name="android:windowExitAnimation">@anim/set_translate_alpha_bottom_out_slow</item>
+    </style>
+
+    <style name="edit_text_hint_style">
+        <item name="android:textSize">10sp</item>
+    </style>
+</resources>

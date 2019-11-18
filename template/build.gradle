@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.github.991548267'
+version = '0.0.1-alpha01'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation dependency.support.appcompat
+    implementation dependency.support.material
+    implementation dependency.support.recyclerview
+    implementation dependency.constraint_layout
+
+    // Third party
+    implementation dependency.okhttp.runtime
+    implementation dependency.json.fastjson
+    implementation dependency.json.gson
+    implementation dependency.glide.runtime
+    annotationProcessor dependency.glide.runtime
+    annotationProcessor dependency.glide.compiler
+
+    implementation 'top.zibin:Luban:1.1.8'
+    implementation 'com.yanzhenjie.permission:x:2.0.1'
+}

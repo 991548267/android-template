@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+def static releaseTime() {
+    return new Date().format("yyMMdd-HH-mm", TimeZone.getTimeZone("GMT+8"))
+}
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+    defaultConfig {
+        applicationId "gy.android.template"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "template"
+    }
+    signingConfigs {
+        debug {
+            storeFile file('default.jks')
+            storePassword 'default123'
+            keyPassword 'default1234'
+            keyAlias 'default'
+        }
+        release {
+            storeFile file('default.jks')
+            storePassword 'default123'
+            keyPassword 'default1234'
+            keyAlias 'default'
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "template"
+    productFlavors {
+        develop {
+            dimension "template"
+            applicationIdSuffix ".develop"
+            versionNameSuffix "-develop"
+            // manifestPlaceholders = [app_name: "@string/app_name", app_icon: "@mipmap/ic_launcher"]
+        }
+        product {
+            dimension "template"
+            versionNameSuffix "-product"
+            // manifestPlaceholders = [app_name: "@string/app_name", app_icon: "@mipmap/ic_launcher"]
+        }
+    }
+    applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                output ->
+                    def time = releaseTime()
+                    output.outputFileName = "Template-$variant.buildType.name-v$variant.versionName-$time" + ".apk"
+            }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation dependency.support.appcompat
+    implementation dependency.constraint_layout
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

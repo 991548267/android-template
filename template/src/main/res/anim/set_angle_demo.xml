@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="true">
+<!--    &lt;!&ndash;渐变透明度动画效果&ndash;&gt;-->
+<!--    <alpha-->
+<!--        android:fromAlpha="float"-->
+<!--        android:toAlpha="float" />-->
+<!--    &lt;!&ndash;画面转移旋转动画效果&ndash;&gt;-->
+<!--    <rotate-->
+<!--        android:fromDegrees="float"-->
+<!--        android:pivotX="float"-->
+<!--        android:pivotY="float"-->
+<!--        android:toDegrees="float" />-->
+<!--    &lt;!&ndash;渐变尺寸伸缩动画效果&ndash;&gt;-->
+<!--    <scale-->
+<!--        android:fromXScale="float"-->
+<!--        android:fromYScale="float"-->
+<!--        android:pivotX="float"-->
+<!--        android:pivotY="float"-->
+<!--        android:toXScale="float"-->
+<!--        android:toYScale="float" />-->
+<!--    &lt;!&ndash;画面转换位置移动动画效果&ndash;&gt;-->
+<!--    <translate-->
+<!--        android:fromXDelta="float"-->
+<!--        android:fromYDelta="float"-->
+<!--        android:toXDelta="float"-->
+<!--        android:toYDelta="float" />-->
+</set>

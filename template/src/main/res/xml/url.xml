@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<url>
+    <!--example-->
+    <!--
+    <Node
+        Expires="0"
+        Key="login"
+        MockClass="com.youngheart.mockdata.MockLoginSuccessInfo"
+        NetType="post"
+        Url="http://www.weather.com.cn/data/sk/101010100.html" />
+    -->
+
+
+</url>
