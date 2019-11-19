@@ -475,6 +475,10 @@ public class PermissionUtil {
         void onActivityCreate(Activity activity);
     }
 
+    public interface SettingCallback {
+        void cancel();
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     // dialog
     ///////////////////////////////////////////////////////////////////////////
@@ -488,12 +492,13 @@ public class PermissionUtil {
                 .create().show();
     }
 
-    public static void showOpenAppSettingDialog(Activity activity) {
+    public static void showOpenAppSettingDialog(Activity activity, SettingCallback callback) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(android.R.string.dialog_alert_title)
                 .setMessage(R.string.permission_denied_forever_message)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> launchAppDetailsSettings(activity))
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                    callback.cancel();
                 })
                 .setCancelable(false)
                 .create().show();

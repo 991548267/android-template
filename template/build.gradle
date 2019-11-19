@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.991548267'
-version = '0.0.1-alpha01'
+version = '1.0.0-alpha01'
 
 android {
     compileSdkVersion build_versions.target_sdk
