@@ -41,13 +41,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation dependency.support.appcompat
-    implementation dependency.support.material
-    implementation dependency.support.recyclerview
+    implementation dependency.appcompat.appcompat
+    implementation dependency.google.material
+    implementation dependency.recyclerview.recyclerview
     implementation dependency.constraint_layout
 
     // Third party
-    implementation dependency.okhttp.runtime
+    implementation dependency.okhttp.okhttp
     implementation dependency.json.fastjson
     implementation dependency.json.gson
     implementation dependency.glide.runtime

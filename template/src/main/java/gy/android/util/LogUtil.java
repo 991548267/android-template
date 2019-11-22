@@ -7,7 +7,7 @@ import gy.android.BuildConfig;
 // http://www.jianshu.com/p/325e8f025c98
 public class LogUtil {
 
-    public static String TAG = "template.";
+    public static final String TAG = "template.";
 
     public static final int VERBOSE = 1;
 
@@ -21,7 +21,7 @@ public class LogUtil {
 
     public static final int NOTHING = 6;
 
-    public static int LEVEL = BuildConfig.DEBUG ? VERBOSE : WARN;
+    public static final int LEVEL = BuildConfig.DEBUG ? VERBOSE : WARN;
 
     public static void v(Object target, String msg) {
         log(VERBOSE, convertTag(target), msg);

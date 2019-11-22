@@ -78,11 +78,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation dependency.support.appcompat
-    implementation dependency.support.material
+    implementation dependency.appcompat.appcompat
+    implementation dependency.google.material
     implementation dependency.constraint_layout
 
     implementation dependency.json.fastjson
+    implementation dependency.rxjava2.rxjava
+    implementation dependency.rxjava2.rxandroid
 
     implementation project(':template')
 //    implementation "com.github.991548267:android-template:1.0.0-alpha01"

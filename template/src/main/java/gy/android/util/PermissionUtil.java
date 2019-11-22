@@ -482,8 +482,8 @@ public class PermissionUtil {
     ///////////////////////////////////////////////////////////////////////////
     // dialog
     ///////////////////////////////////////////////////////////////////////////
-    public static void showRationaleDialog(Activity activity, OnRationaleListener.ShouldRequest request) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    public static void showRationaleDialog(Context context, OnRationaleListener.ShouldRequest request) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(android.R.string.dialog_alert_title)
                 .setMessage(R.string.permission_rationale_message)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> request.again(true))
@@ -492,11 +492,11 @@ public class PermissionUtil {
                 .create().show();
     }
 
-    public static void showOpenAppSettingDialog(Activity activity, SettingCallback callback) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    public static void showOpenAppSettingDialog(Context context, SettingCallback callback) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(android.R.string.dialog_alert_title)
                 .setMessage(R.string.permission_denied_forever_message)
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> launchAppDetailsSettings(activity))
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> launchAppDetailsSettings(context))
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> {
                     callback.cancel();
                 })

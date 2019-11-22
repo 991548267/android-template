@@ -1,6 +1,7 @@
 package gy.android.template;
 
 import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -9,11 +10,14 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.List;
 
+import gy.android.bluetooth.BluetoothDeviceDialog;
 import gy.android.ui.BaseActivity;
+import gy.android.ui.intent.StartActivity;
 import gy.android.util.LogUtil;
 import gy.android.util.PermissionUtil;
 
 public class EntryActivity extends BaseActivity {
+
 
     private String[] permissions;
 
@@ -35,7 +39,7 @@ public class EntryActivity extends BaseActivity {
 
     @Override
     public void initEvent() {
-
+        StartActivity.startActivity(activity, BluetoothSearchActivity.class);
     }
 
     @Override

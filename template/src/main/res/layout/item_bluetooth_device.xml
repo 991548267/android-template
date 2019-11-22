@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bluetooth_name"
+        style="@style/text.sp16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/x3"
+        android:paddingBottom="@dimen/x3"
+        android:text="Name"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_bluetooth_pair"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bluetooth_address"
+        style="@style/text.sp16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/x3"
+        android:paddingBottom="@dimen/x3"
+        android:text="Address"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_bluetooth_pair"
+        app:layout_constraintTop_toBottomOf="@id/tv_bluetooth_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bluetooth_pair"
+        style="@style/text.sp18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paired"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bluetooth_address"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_bluetooth_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

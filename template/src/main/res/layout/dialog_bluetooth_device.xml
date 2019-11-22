@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/x250"
+    android:layout_height="@dimen/y350"
+    android:layout_gravity="center"
+    android:background="@color/bg_all_background">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_search_bluetooth"
+        style="@style/text.sp18.black"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/bg_all_foreground"
+        android:gravity="center"
+        android:text="@string/tv_search_bluetooth"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_action_chevron_left"
+        app:layout_constraintBottom_toBottomOf="@id/tv_search_bluetooth"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_search_bluetooth" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_bluetooth_device"
+        style="@android:style/Widget.Material.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btn_close" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bluetooth_device"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/x3"
+        android:paddingRight="@dimen/x3"
+        app:layout_constraintBottom_toTopOf="@id/btn_bluetooth_start_discovery"
+        app:layout_constraintTop_toBottomOf="@id/progress_bluetooth_device"
+        app:layout_constraintVertical_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_bluetooth_start_discovery"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_bluetooth_start_discovery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@id/rv_bluetooth_device"
+        app:layout_constraintRight_toLeftOf="@id/btn_bluetooth_stop_discovery"
+        app:layout_constraintTop_toBottomOf="@id/rv_bluetooth_device" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_bluetooth_stop_discovery"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_bluetooth_stop_discovery"
+        app:layout_constraintBottom_toBottomOf="@id/btn_bluetooth_start_discovery"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/btn_bluetooth_start_discovery"
+        app:layout_constraintRight_toRightOf="@id/rv_bluetooth_device"
+        app:layout_constraintTop_toTopOf="@id/btn_bluetooth_start_discovery" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
