@@ -122,7 +122,6 @@ public class BluetoothSearchActivity extends BaseToolbarActivity {
             @Override
             public void onSubscribe(Disposable d) {
 
-
             }
 
             @Override

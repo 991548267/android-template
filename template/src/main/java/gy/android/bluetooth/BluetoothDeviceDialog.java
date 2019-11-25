@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +48,7 @@ public class BluetoothDeviceDialog extends AppCompatDialog {
         initEvent();
     }
 
-    private List<BTDevice> rv_bluetooth_device_list = new ArrayList<>();
+    private List<BluetoothDevice> rv_bluetooth_device_list = new ArrayList<>();
     private BTDeviceAdapter rv_bluetooth_device_adapter;
     private DividerItemDecoration rv_bluetooth_device_divider;
 
@@ -100,8 +102,8 @@ public class BluetoothDeviceDialog extends AppCompatDialog {
 
             @Override
             public void onDeviceFound(BluetoothDevice device) {
-                BTDevice btDevice = new BTDevice(device.getName(), device.getAddress(), device.getBondState() == BluetoothDevice.BOND_BONDED);
-                rv_bluetooth_device_list.add(btDevice);
+                rv_bluetooth_device_list.add(device);
+                Collections.sort(rv_bluetooth_device_list, new BluetoothDeviceComparator());
                 rv_bluetooth_device_adapter.notifyDataSetChanged();
             }
         });
@@ -139,7 +141,7 @@ public class BluetoothDeviceDialog extends AppCompatDialog {
 
     private void onBTDeviceItemClick(int position) {
         if (onBluetoothDeviceSelectListener != null) {
-            onBluetoothDeviceSelectListener.onDeviceSelect(rv_bluetooth_device_list.get(position).address);
+            onBluetoothDeviceSelectListener.onDeviceSelect(rv_bluetooth_device_list.get(position).getAddress());
         }
         dismiss();
     }
@@ -154,10 +156,10 @@ public class BluetoothDeviceDialog extends AppCompatDialog {
         super.dismiss();
     }
 
-    class BTDeviceAdapter extends BaseRecyclerViewAdapter<BTDevice> {
+    class BTDeviceAdapter extends BaseRecyclerViewAdapter<BluetoothDevice> {
         private OnItemClickListener onItemClickListener;
 
-        public BTDeviceAdapter(Context context, List<BTDevice> list) {
+        public BTDeviceAdapter(Context context, List<BluetoothDevice> list) {
             super(context, list);
         }
 
@@ -169,13 +171,14 @@ public class BluetoothDeviceDialog extends AppCompatDialog {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            if (!TextUtils.isEmpty(list.get(position).name)) {
-                ((ViewHolder) holder).tv_bluetooth_name.setText(list.get(position).name);
+            if (!TextUtils.isEmpty(list.get(position).getName())) {
+                ((ViewHolder) holder).tv_bluetooth_name.setText(list.get(position).getName());
             } else {
                 ((ViewHolder) holder).tv_bluetooth_name.setText("Unknown Device");
             }
-            ((ViewHolder) holder).tv_bluetooth_address.setText(list.get(position).address);
-            ((ViewHolder) holder).tv_bluetooth_pair.setVisibility(list.get(position).isPair ? View.VISIBLE : View.GONE);
+            ((ViewHolder) holder).tv_bluetooth_address.setText(list.get(position).getAddress());
+            ((ViewHolder) holder).tv_bluetooth_pair.setVisibility(
+                    list.get(position).getBondState() == BluetoothDevice.BOND_BONDED ? View.VISIBLE : View.GONE);
         }
 
         public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -205,19 +208,14 @@ public class BluetoothDeviceDialog extends AppCompatDialog {
         void onItemClick(int position);
     }
 
-    class BTDevice {
-        private String name;
-        private String address;
-        private boolean isPair;
-
-        public BTDevice(String name, String address, boolean isPair) {
-            this.name = name;
-            this.address = address;
-            this.isPair = isPair;
-        }
-    }
-
     public interface OnBluetoothDeviceSelectListener {
         void onDeviceSelect(String address);
+    }
+
+    class BluetoothDeviceComparator implements Comparator<BluetoothDevice> {
+        @Override
+        public int compare(BluetoothDevice device1, BluetoothDevice device2) {
+            return device2.getBondState() - device1.getBondState();
+        }
     }
 }
