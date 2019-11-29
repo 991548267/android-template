@@ -16,6 +16,7 @@ import gy.android.ui.util.ProgressDialogUtil;
 import gy.android.ui.util.ToastUtil;
 import gy.android.util.LogUtil;
 
+@Deprecated
 public abstract class BaseActivity extends AppCompatActivity implements ActivityInitInterface {
     private static final boolean D = true;
 
@@ -33,9 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
         if (D) LogUtil.v(this, "onCreate");
         activity = this;
         context = activity;
-        fragmentManagerUtil = new FragmentManagerUtil(getSupportFragmentManager());
-        resources = getResources();
-        handlerUtil = new HandlerUtil();
+        init();
 
         initContentView();
         initData(savedInstanceState);
@@ -75,9 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
 
     @Override
     protected void onDestroy() {
-        dismissProgressDialog();
-        ToastUtil.dismiss(activity);
-        handlerUtil.release();
+        unInit();
         super.onDestroy();
         if (D) LogUtil.v(this, "onDestroy");
     }
@@ -92,6 +89,23 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
     public void onBackPressed() {
         super.onBackPressed();
         enterAndExitAnimation(false);
+    }
+
+    private void init() {
+        fragmentManagerUtil = new FragmentManagerUtil(getSupportFragmentManager());
+        resources = getResources();
+        handlerUtil = new HandlerUtil();
+    }
+
+    private void unInit() {
+        dismissProgressDialog();
+        if (fragmentManagerUtil != null) {
+            fragmentManagerUtil = null;
+        }
+        if (handlerUtil != null) {
+            handlerUtil.release();
+            handlerUtil = null;
+        }
     }
 
     protected final void runOnUIThread(Runnable task) {

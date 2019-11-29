@@ -42,9 +42,9 @@ public abstract class BaseToolbarActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         tv_toolbar_title = findViewById(R.id.tv_toolbar_title);
         tv_toolbar_title.setText(getTitle());
+        toolbar.setVisibility(hasToolbar() ? View.VISIBLE : View.GONE);
 
         fl_content = findViewById(R.id.fl_content);
         LayoutInflater.from(this).inflate(getContentViewId(), fl_content);
@@ -86,7 +86,7 @@ public abstract class BaseToolbarActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        release();
+        unInit();
         LogUtil.v(this, "onDestroy");
         super.onDestroy();
     }
@@ -153,10 +153,13 @@ public abstract class BaseToolbarActivity extends AppCompatActivity {
         fragmentManagerUtil = new FragmentManagerUtil(getSupportFragmentManager());
     }
 
-    private void release() {
+    private void unInit() {
+        dismissProgressDialog();
+        if (handlerUtil != null) {
+            handlerUtil.release();
+            handlerUtil = null;
+        }
         fragmentManagerUtil = null;
-        handlerUtil.release();
-        handlerUtil = null;
         resources = null;
         activity = null;
     }
@@ -198,6 +201,10 @@ public abstract class BaseToolbarActivity extends AppCompatActivity {
     }
 
     protected boolean useEnterAndExitAnimation() {
+        return true;
+    }
+
+    protected boolean hasToolbar() {
         return true;
     }
 

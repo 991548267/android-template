@@ -301,8 +301,6 @@ public class Camera2Controller {
             listener.onRecord(recordFilePath);
             recordFilePath = null;
         }
-
-        startPreview();
     }
 
     private static final int TAKE_PHOTO_BEFORE = 0;
@@ -485,6 +483,12 @@ public class Camera2Controller {
             session.close();
             previewSession = null;
         }
+
+        @Override
+        public void onClosed(@NonNull CameraCaptureSession session) {
+            super.onClosed(session);
+            previewSession = null;
+        }
     };
 
     private void closeCameraSession() {
@@ -498,8 +502,14 @@ public class Camera2Controller {
 
     private void closeCameraSession(CameraCaptureSession session) {
         if (session != null) {
-            session.close();
-            session = null;
+            try {
+                session.abortCaptures();
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            } finally {
+                session.close();
+                session = null;
+            }
         }
     }
 
@@ -717,6 +727,12 @@ public class Camera2Controller {
         @Override
         public void onConfigureFailed(@NonNull CameraCaptureSession session) {
             session.close();
+            recordSession = null;
+        }
+
+        @Override
+        public void onClosed(@NonNull CameraCaptureSession session) {
+            super.onClosed(session);
             recordSession = null;
         }
     };
