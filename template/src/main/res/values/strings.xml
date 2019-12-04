@@ -16,4 +16,6 @@
     <string name="tv_search_bluetooth">搜索蓝牙</string>
     <string name="btn_bluetooth_start_discovery">开始扫描</string>
     <string name="btn_bluetooth_stop_discovery">停止扫描</string>
+
+    <string name="tv_recycler_demo_item">RecyclerView Item</string>
 </resources>
