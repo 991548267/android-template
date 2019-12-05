@@ -138,16 +138,4 @@ public class RecyclerViewActivity extends BaseToolbarActivity {
             }
         });
     }
-
-    class SimpleHeaderViewHolder extends HeaderViewHolder {
-
-        public SimpleHeaderViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-
-        @Override
-        public void onRefreshStateChange(int state) {
-
-        }
-    }
 }

@@ -21,7 +21,7 @@
  **/
 ext.dependency = [:]
 def versions = [:]
-versions.android_gradle_plugin = '3.4.0'
+versions.android_gradle_plugin = '3.5.2'
 
 versions.activity = "1.0.0"
 versions.ads = "1.0.0-alpha03"
