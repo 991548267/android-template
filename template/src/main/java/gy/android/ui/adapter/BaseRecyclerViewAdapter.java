@@ -16,6 +16,7 @@ import java.util.List;
  * Created by Chron on 2017/12/29.
  */
 
+@Deprecated
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter implements ItemClickListener {
     protected static boolean D = true;
 

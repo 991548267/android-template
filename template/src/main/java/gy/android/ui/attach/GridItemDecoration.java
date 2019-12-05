@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * Created by Chron on 2017/12/28.
  */
 
+@Deprecated
 public class GridItemDecoration extends RecyclerView.ItemDecoration {
     private static final boolean D = true;
 

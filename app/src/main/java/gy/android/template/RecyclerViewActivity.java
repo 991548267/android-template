@@ -3,6 +3,7 @@ package gy.android.template;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,18 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import gy.android.ui.adapter.HeaderViewHolder;
+import gy.android.ui.adapter.OnRecyclerViewScrollListener;
+import gy.android.ui.adapter.RecyclerViewAdapter;
 import gy.android.ui.attach.DividerGridItemDecoration;
 import gy.android.ui.attach.DividerListItemDecoration;
 import gy.android.ui.adapter.OnRecyclerViewItemClickListener;
 import gy.android.ui.adapter.SimpleRecyclerViewAdapter;
 import gy.android.ui.BaseToolbarActivity;
-import gy.android.ui.attach.GridItemDecoration;
 
 public class RecyclerViewActivity extends BaseToolbarActivity {
 
     private RecyclerView rv_recycler;
     private List<String> recyclerView_list = new ArrayList<>();
     private SimpleRecyclerViewAdapter recyclerView_adapter;
+    private RecyclerViewAdapter recyclerView_more_adapter;
     private LinearLayoutManager rv_recycler_manager;
     private RecyclerView.ItemDecoration rv_recycler_divider;
 
@@ -51,6 +55,7 @@ public class RecyclerViewActivity extends BaseToolbarActivity {
         recyclerView_list.add(getString(R.string.tv_recycler_demo_item));
         recyclerView_list.add(getString(R.string.tv_recycler_demo_item));
         recyclerView_adapter = new SimpleRecyclerViewAdapter(activity, recyclerView_list);
+        recyclerView_more_adapter = new RecyclerViewAdapter(recyclerView_adapter);
         rv_recycler_manager = new LinearLayoutManager(activity);
         rv_recycler_divider = new DividerListItemDecoration(activity,
                 rv_recycler_manager.getOrientation(), R.color.Orchid, 2);
@@ -78,7 +83,7 @@ public class RecyclerViewActivity extends BaseToolbarActivity {
         rv_grid_recycler_adapter = new SimpleRecyclerViewAdapter(activity, rv_grid_recycler_list, SimpleRecyclerViewAdapter.DIVIDER_GRID);
         rv_grid_recycler_manager = new GridLayoutManager(activity, 3);
         rv_grid_recycler_divider = new DividerGridItemDecoration(activity, rv_grid_recycler_manager.getSpanCount(),
-                R.color.Orchid, 5, true);
+                R.color.Orchid, 5, false);
     }
 
     @Override
@@ -86,7 +91,7 @@ public class RecyclerViewActivity extends BaseToolbarActivity {
         rv_recycler = parent.findViewById(R.id.rv_recycler);
         rv_recycler.setLayoutManager(rv_recycler_manager);
         rv_recycler.addItemDecoration(rv_recycler_divider);
-        rv_recycler.setAdapter(recyclerView_adapter);
+        rv_recycler.setAdapter(recyclerView_more_adapter);
 
         rv_horizontal_recycler = parent.findViewById(R.id.rv_horizontal_recycler);
         rv_horizontal_recycler.setLayoutManager(rv_horizontal_recycler_manager);
@@ -112,5 +117,37 @@ public class RecyclerViewActivity extends BaseToolbarActivity {
                 showToast("onItemLongClick: " + viewHolder.getAdapterPosition());
             }
         });
+        rv_recycler.addOnScrollListener(new OnRecyclerViewScrollListener() {
+            @Override
+            public void onLoadMore() {
+                recyclerView_more_adapter.setLoadState(RecyclerViewAdapter.LOADING);
+                if (recyclerView_list.size() < 24) {
+                    runOnUIThread(() -> {
+                        List<String> list = new ArrayList<>(recyclerView_list);
+                        recyclerView_list.addAll(list);
+                        recyclerView_more_adapter.setLoadState(RecyclerViewAdapter.LOADING_COMPLETE);
+                    }, 1000);
+                } else {
+                    recyclerView_more_adapter.setLoadState(RecyclerViewAdapter.LOADING_END);
+                }
+            }
+
+            @Override
+            public void onRefresh() {
+
+            }
+        });
+    }
+
+    class SimpleHeaderViewHolder extends HeaderViewHolder {
+
+        public SimpleHeaderViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+
+        @Override
+        public void onRefreshStateChange(int state) {
+
+        }
     }
 }

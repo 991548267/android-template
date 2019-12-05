@@ -18,6 +18,10 @@ import gy.android.util.LogUtil;
 /**
  * RecyclerView 梳理：点击&长按事件、分割线、拖曳排序、滑动删除 - 掘金
  * https://juejin.im/post/5a320ffcf265da43200342a3
+ * <pre>
+ *     mDividerGridItemDecoration = new DividerGridItemDecoration(recyclerView.getContext(), mGridLayoutManager.getSpanCount());
+ *     recyclerView.addItemDecoration(mDividerGridItemDecoration);
+ * </pre>
  */
 
 public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
@@ -166,7 +170,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
                 if (column == 0) {
                     final int leftTop = child.getTop() - params.topMargin - offset;
-                    final int leftBottom = child.getBottom() + params.bottomMargin;
+                    final int leftBottom = child.getBottom() + params.bottomMargin + offset;
 
                     final int leftRight = child.getLeft() - params.leftMargin;
                     final int leftLeft = leftRight - offset;
